@@ -1,0 +1,72 @@
+﻿<Window x:Class="GFCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GFCalculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Calculator"  />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+        <RadioButton Name="palRadio" Content="Pal" ToolTip="Select the Region for your Gamecube/Emulator, used for Action Replay code generation" ToolTipService.ShowDuration="5000" HorizontalAlignment="Left" Margin="252,52,0,0" VerticalAlignment="Top" GroupName="Region"/>
+        <RadioButton Name="ntscRadio" Content="NTSC" ToolTip="Select the Region for your Gamecube/Emulator, used for Action Replay code generation" ToolTipService.ShowDuration="5000" HorizontalAlignment="Left" Margin="190,52,0,0" VerticalAlignment="Top" GroupName="Region" IsChecked="True"/>
+
+        <ComboBox HorizontalAlignment="Left" Margin="190,86,0,0" VerticalAlignment="Top" Width="120"
+                                  IsTextSearchEnabled="False"
+                                  IsEditable="True"
+                                  ItemsSource="{Binding BorgNames}"
+                                  PreviewTextInput="PreviewTextInput_EnhanceComboSearch"
+                                  PreviewKeyUp="PreviewKeyUp_EnhanceComboSearch"
+                                  DataObject.Pasting="Pasting_EnhanceComboSearch"
+                                  Name="cmbBorg"
+                                  ToolTip="Type some of the name of the desired borg and select it from the drop down" 
+                                  ToolTipService.ShowDuration="5000"/>
+        <Button Content="Calculate Values" HorizontalAlignment="Left" Margin="334,86,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
+
+        <Label Content="Borg:" HorizontalAlignment="Left" Margin="32,117,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Decimal Code:" HorizontalAlignment="Left" Margin="32,148,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Hex Code:" HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Binary Code:" HorizontalAlignment="Left" Margin="32,205,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Force Sequence:" HorizontalAlignment="Left" Margin="32,239,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label Content="Action Replay Code:" HorizontalAlignment="Left" Margin="32,274,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lblBorgName" Content=""  HorizontalAlignment="Left" Margin="190,117,0,0" VerticalAlignment="Top" Width="243"/>
+        <Label x:Name="lblDecimalVal" Content=""  HorizontalAlignment="Left" Margin="190,148,0,0" VerticalAlignment="Top" Width="243"/>
+        <Label x:Name="lblHexVal" Content=""  HorizontalAlignment="Left" Margin="190,177,0,0" VerticalAlignment="Top" Width="243"/>
+        <Label x:Name="lblBinaryVal" Content=""  HorizontalAlignment="Left" Margin="190,207,0,0" VerticalAlignment="Top" Width="243"/>
+        <Label x:Name="lblForceSeq" Content=""  HorizontalAlignment="Left" Margin="190,240,0,0" VerticalAlignment="Top" Width="243"/>
+        <Label x:Name="lblArCode" Content=""  HorizontalAlignment="Left" Margin="190,271,0,0" VerticalAlignment="Top" Width="243"/>
+        <Label Content="Select the desired Borg:" HorizontalAlignment="Left" Margin="33,83,0,0" VerticalAlignment="Top"/>
+        <Label Content="Gamecube Region:" HorizontalAlignment="Left" Margin="33,46,0,0" VerticalAlignment="Top"/>
+    </Grid>
+    </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="20th Force Glitch"  />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock TextWrapping="Wrap" Margin="10"><Run Text="01. Start with all forces being empty."/><LineBreak/><Run Text="02. Put the Normal Ninja on each force noted in the force sequence generated from the calculator. "/><LineBreak/><Run Text="&#x9;e.g. - given a force sequence of &quot;2, 4, 6, 10, 11&quot;, you would put the Normal Ninja on forces 2, 4, 6, 10, and 11. "/><LineBreak/><Run Text="&#x9;Note: the slot you place the borg in has no effect as far as we know"/><LineBreak/><Run Text="03. Once a borg has been placed in all necessary forces, scroll to the 20th force."/><LineBreak/><Run Text="04. Place G Red in the 23rd slot of the 20th force."/><LineBreak/><Run Text="05. Place Revolver Gunman in the 15th slot of the 20th force."/><LineBreak/><Run Text="06. Move the cursor to any empty cell in the box and press A. The game should make a sound as if you picked up a borg."/><LineBreak/><Run Text="07. Move the cursor on top of Normal Ninja and Press A. "/><LineBreak/><Run Text="08. The 20th force should fill up with borgs."/><LineBreak/><Run Text="09. Press B to release the Normal Ninja."/><LineBreak/><Run Text="10. Pick up the borg in slot 24 of the 20th force."/><LineBreak/><Run Text="11. Move the borg to slot 15, then press B to release the borg that was formerly in slot 15."/><LineBreak/><Run Text="12. Move the cursor to any empty cell in the box (except the third cell - the cell two spaces to the right of the upper left corner) and press A."/><LineBreak/><Run Text="13. Once again, the game should make a sound as if you picked up a borg."/><LineBreak/><Run Text="14. Move the cursor to the second cell in the box (i.e. the one just to the right of the upper left corner)."/><LineBreak/><Run Text="15. Press A. The borg in the second slot should change to one that corresponds to the force sequence you used."/><LineBreak/><Run Text="16. Press B to release the borg you just picked up."/><LineBreak/><Run Text="17. Delete every force."/></TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Action Replay"  />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock TextWrapping="Wrap" Margin="10"><Run Text="Action Replay is a cheating device which can also be used to acquire borgs"/><LineBreak/><Run/><LineBreak/><Run Text="When using a physical Gamecube an Action Replay disc and card are required"/><LineBreak/><Run Text="When using an emulator, support for action replay codes must be available."/><LineBreak/><Run/><LineBreak/><Run Text="The region selected in the calculator drives what code is generated."/><LineBreak/><Run Text="The code generated here works fine in the emulator i use, but if necessary you may need to encrypt the code using a tool such as GCNCrypt."/><LineBreak/><Run/><LineBreak/><Run Text="For example, for G-Black the hex code is 62a, padded to 062a"/><LineBreak/><Run/><LineBreak/><Run Text="The NTSC AR code for G-Black is:"/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;02587F10 0000062a"/><LineBreak/><Run Text="&#x9;"/><LineBreak/><Run Text="This is the format of code this calculator generates"/><LineBreak/><Run/><LineBreak/><Run Text="The encrypted version from a tool like GCNCrypt is:"/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;DM9K-GCNF-XFCK4 "/><LineBreak/><Run Text="&#x9;5TB3-FZ95-E3M9A"/><LineBreak/><Run Text="&#x9;"/><LineBreak/><Run Text="What version you need depends on your set up, but the community has many resources to help you"/></TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</Window>
