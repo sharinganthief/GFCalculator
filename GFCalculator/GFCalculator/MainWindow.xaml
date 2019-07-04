@@ -15,10 +15,89 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-        <RadioButton Name="palRadio" Content="Pal" ToolTip="Select the Region for your Gamecube/Emulator, used for Action Replay code generation" ToolTipService.ShowDuration="5000" HorizontalAlignment="Left" Margin="252,52,0,0" VerticalAlignment="Top" GroupName="Region"/>
-        <RadioButton Name="ntscRadio" Content="NTSC" ToolTip="Select the Region for your Gamecube/Emulator, used for Action Replay code generation" ToolTipService.ShowDuration="5000" HorizontalAlignment="Left" Margin="190,52,0,0" VerticalAlignment="Top" GroupName="Region" IsChecked="True"/>
+                    <Label Content="Gamecube Region:" HorizontalAlignment="Left" Margin="33,20,0,0" VerticalAlignment="Top"/>
+                    <RadioButton Name="palRadio" Content="Pal" ToolTip="Select the Region for your Gamecube/Emulator, used for Action Replay code generation" ToolTipService.ShowDuration="5000" HorizontalAlignment="Left" Margin="252,26,0,0" VerticalAlignment="Top" GroupName="Region"/>
+                    <RadioButton Name="ntscRadio" Content="NTSC" ToolTip="Select the Region for your Gamecube/Emulator, used for Action Replay code generation" ToolTipService.ShowDuration="5000" HorizontalAlignment="Left" Margin="190,26,0,0" VerticalAlignment="Top" GroupName="Region" IsChecked="True"/>
+                    <Label Content="Select the desired Borg:" HorizontalAlignment="Left" Margin="33,57,0,0" VerticalAlignment="Top"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="190,86,0,0" VerticalAlignment="Top" Width="120"
+                    <Label Content="Select the desired color:" HorizontalAlignment="Left" Margin="33,88,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="190,91,0,0" VerticalAlignment="Top" Width="120"
+                        IsTextSearchEnabled="False"
+                        x:Name="cmbColor"
+                        ToolTip="For the purposes of determining how much HP and ammo a borg has, its color effectively changes its level"
+                        ToolTipService.ShowDuration="5000">
+                        <ListBoxItem Content="Normal"    ToolTip="Normal and alternate borgs have no change" ToolTipService.ShowDuration="5000"/>
+                        <ListBoxItem Content="Alternate" ToolTip="Normal and alternate borgs have no change" ToolTipService.ShowDuration="5000"/>
+                        <ListBoxItem Content="Gold"      ToolTip="Gold borgs have six levels more than normal" ToolTipService.ShowDuration="5000"/>
+                        <ListBoxItem Content="Silver"    ToolTip="Silver borgs have four levels more than normal" ToolTipService.ShowDuration="5000"/>
+                        <ListBoxItem Content="Clear"     ToolTip="Clear borgs have two levels less than normal" ToolTipService.ShowDuration="5000"/>
+                        <ListBoxItem Content="Black"     ToolTip="Black borgs have two levels more than normal" ToolTipService.ShowDuration="5000"/>
+                    </ComboBox>
+                    <Label Content="Select the desired level:" HorizontalAlignment="Left" Margin="324,57,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="481,57,0,0" VerticalAlignment="Top" Width="131"
+                        IsTextSearchEnabled="False"
+                        x:Name="cmbLvl">
+                        <ListBoxItem Content="1"/>
+                        <ListBoxItem Content="2"/>
+                        <ListBoxItem Content="3"/>
+                        <ListBoxItem Content="4"/>
+                        <ListBoxItem Content="5"/>
+                        <ListBoxItem Content="6"/>
+                        <ListBoxItem Content="7"/>
+                        <ListBoxItem Content="8"/>
+                        <ListBoxItem Content="9"/>
+                        <ListBoxItem Content="10"/>
+                    </ComboBox>
+                    <Label Content="Select the desired location:" HorizontalAlignment="Left" Margin="324,86,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="557,88,0,0" VerticalAlignment="Top" Width="55"
+                        IsTextSearchEnabled="False"
+                        x:Name="cmbCol"
+                        ToolTip="Column"
+                        ToolTipService.ShowDuration="5000">
+                        <ListBoxItem Content="1"/>
+                        <ListBoxItem Content="2"/>
+                        <ListBoxItem Content="3"/>
+                        <ListBoxItem Content="4"/>
+                        <ListBoxItem Content="5"/>
+                        <ListBoxItem Content="6"/>
+                        <ListBoxItem Content="7"/>
+                        <ListBoxItem Content="8"/>
+                        <ListBoxItem Content="9"/>
+                        <ListBoxItem Content="10"/>
+                        <ListBoxItem Content="11"/>
+                        <ListBoxItem Content="12"/>
+                        <ListBoxItem Content="13"/>
+                        <ListBoxItem Content="14"/>
+                        <ListBoxItem Content="15"/>
+                        <ListBoxItem Content="16"/>
+                        <ListBoxItem Content="17"/>
+                        <ListBoxItem Content="18"/>
+                        <ListBoxItem Content="19"/>
+                        <ListBoxItem Content="20"/>
+                        <ListBoxItem Content="21"/>
+                        <ListBoxItem Content="22"/>
+                        <ListBoxItem Content="23"/>
+                        <ListBoxItem Content="24"/>
+                        <ListBoxItem Content="25"/>
+
+
+                    </ComboBox>
+                    <ComboBox HorizontalAlignment="Left" Margin="481,88,0,0" VerticalAlignment="Top" Width="55"
+                              IsTextSearchEnabled="False"
+                              x:Name="cmbRow"
+                              ToolTip="Row"
+                              ToolTipService.ShowDuration="5000">
+                        <ListBoxItem Content="1"/>
+                        <ListBoxItem Content="2"/>
+                        <ListBoxItem Content="3"/>
+                        <ListBoxItem Content="4"/>
+                        <ListBoxItem Content="5"/>
+                        <ListBoxItem Content="6"/>
+                        <ListBoxItem Content="7"/>
+                        <ListBoxItem Content="8"/>
+
+                    </ComboBox>
+                    <ComboBox HorizontalAlignment="Left" Margin="190,60,0,0" VerticalAlignment="Top" Width="120"
                                   IsTextSearchEnabled="False"
                                   IsEditable="True"
                                   ItemsSource="{Binding BorgNames}"
@@ -28,24 +107,37 @@
                                   Name="cmbBorg"
                                   ToolTip="Type some of the name of the desired borg and select it from the drop down" 
                                   ToolTipService.ShowDuration="5000"/>
-        <Button Content="Calculate Values" HorizontalAlignment="Left" Margin="334,86,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
 
-        <Label Content="Borg:" HorizontalAlignment="Left" Margin="32,117,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label Content="Decimal Code:" HorizontalAlignment="Left" Margin="32,148,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label Content="Hex Code:" HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label Content="Binary Code:" HorizontalAlignment="Left" Margin="32,205,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label Content="Force Sequence:" HorizontalAlignment="Left" Margin="32,239,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label Content="Action Replay Code:" HorizontalAlignment="Left" Margin="32,274,0,0" VerticalAlignment="Top" Width="136"/>
-        <Label x:Name="lblBorgName" Content=""  HorizontalAlignment="Left" Margin="190,117,0,0" VerticalAlignment="Top" Width="243"/>
-        <Label x:Name="lblDecimalVal" Content=""  HorizontalAlignment="Left" Margin="190,148,0,0" VerticalAlignment="Top" Width="243"/>
-        <Label x:Name="lblHexVal" Content=""  HorizontalAlignment="Left" Margin="190,177,0,0" VerticalAlignment="Top" Width="243"/>
-        <Label x:Name="lblBinaryVal" Content=""  HorizontalAlignment="Left" Margin="190,207,0,0" VerticalAlignment="Top" Width="243"/>
-        <Label x:Name="lblForceSeq" Content=""  HorizontalAlignment="Left" Margin="190,240,0,0" VerticalAlignment="Top" Width="243"/>
-        <Label x:Name="lblArCode" Content=""  HorizontalAlignment="Left" Margin="190,271,0,0" VerticalAlignment="Top" Width="243"/>
-        <Label Content="Select the desired Borg:" HorizontalAlignment="Left" Margin="33,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="Gamecube Region:" HorizontalAlignment="Left" Margin="33,46,0,0" VerticalAlignment="Top"/>
-    </Grid>
-    </TabItem>
+                    <Button Content="Calculate Values" Name="btnCalc" HorizontalAlignment="Left" Margin="513,119,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
+                    <Button Content="Clear" Name="btnClear" HorizontalAlignment="Left" Margin="617,119,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click_1"/>
+
+                    <Label Content="Borg:" HorizontalAlignment="Left" Margin="33,161,0,0" VerticalAlignment="Top" Width="98"/>
+                    <Label Content="Decimal Code:" HorizontalAlignment="Left" Margin="33,203,0,0" VerticalAlignment="Top" Width="98"/>
+                    <Label Content="Hex Code:" HorizontalAlignment="Left" Margin="291,200,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Label Content="Binary Code:" HorizontalAlignment="Left" Margin="474,203,0,0" VerticalAlignment="Top" Width="98"/>
+                    <Label Content="Color:" HorizontalAlignment="Left" Margin="32,247,0,0" VerticalAlignment="Top" Width="98"/>
+                    <Label Content="Level:" HorizontalAlignment="Left" Margin="290,247,0,0" VerticalAlignment="Top" Width="65"/>
+                    <Label Content="Grid Location:" HorizontalAlignment="Left" Margin="474,247,0,0" VerticalAlignment="Top" Width="83"/>
+                    <Label Content="Force Sequence:" HorizontalAlignment="Left" Margin="32,292,0,0" VerticalAlignment="Top" Width="98"/>
+                    <Label Content="Action Replay Code:" HorizontalAlignment="Left" Margin="33,331,0,0" VerticalAlignment="Top" Width="136"/>
+                    <Label x:Name="lblBorgName" Content=""  HorizontalAlignment="Left" Margin="153,161,0,0" VerticalAlignment="Top" Width="243" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblDecimalVal" Content=""  HorizontalAlignment="Left" Margin="154,203,0,0" VerticalAlignment="Top" Width="134" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblHexVal" Content=""  HorizontalAlignment="Left" Margin="373,200,0,0" VerticalAlignment="Top" Width="96" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblBinaryVal" Content=""  HorizontalAlignment="Left" Margin="562,203,0,0" VerticalAlignment="Top" Width="220" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblForceSeq" Content=""  HorizontalAlignment="Left" Margin="153,290,0,0" VerticalAlignment="Top" Width="243" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblArCode" Content=""  HorizontalAlignment="Left" Margin="154,331,0,0" VerticalAlignment="Top" Width="243" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblColor" Content=""  HorizontalAlignment="Left" Margin="153,247,0,0" VerticalAlignment="Top" Width="134" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblLevel" Content=""  HorizontalAlignment="Left" Margin="373,247,0,0" VerticalAlignment="Top" Width="96" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Label x:Name="lblGrid" Content=""  HorizontalAlignment="Left" Margin="562,247,0,0" VerticalAlignment="Top" Width="96" MouseLeftButtonUp="OutputLabel_MouseLeftButtonUp"/>
+                    <Separator HorizontalAlignment="Left" Height="13" Margin="0,144,0,0" VerticalAlignment="Top" Width="786"/>
+                    <Separator HorizontalAlignment="Left" Height="13" Margin="0,188,0,0" VerticalAlignment="Top" Width="786"/>
+                    <Separator HorizontalAlignment="Left" Height="13" Margin="0,232,0,0" VerticalAlignment="Top" Width="786"/>
+                    <Separator HorizontalAlignment="Left" Height="13" Margin="0,277,0,0" VerticalAlignment="Top" Width="786"/>
+                    <Separator HorizontalAlignment="Left" Height="13" Margin="0,318,0,0" VerticalAlignment="Top" Width="786"/>
+                    <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="190,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"
+                             Name="txtDesiredLvl" ToolTip="Enter the desired level, from -127 to 128" ToolTipService.ShowDuration="5000"/>-->
+                </Grid>
+            </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Vertical">

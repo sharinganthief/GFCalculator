@@ -19,5 +19,10 @@ namespace GFCalculator.Helpers
         {
             return values.Select((b, i) => object.Equals(b, val) ? i : -1).Where(i => i != -1).ToArray();
         }
+
+        public static string PadLeftZeroes(this int val, int width)
+        {
+            return val.ToString().PadLeft(width, '0');
+        }
     }
 }
